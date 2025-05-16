@@ -183,7 +183,27 @@ const updateCandidate = async (id, candidateData) =>{
 
 const deleteCandidate = async (id) =>{
     try{
+        if (!Number.isInteger(Number(id)) || Number(id) <= 0) {
+            throw new Error('Invalid ID: ID must be a positive integer');
+        }
 
+        const sql = 'DELETE FROM candidats WHERE id = ?';
+        const params = [id];
+
+        const result = await new Promise ((resolve, reject) => {
+            db.run (sql, params, function (err){
+                if(err){
+                    return reject (new Error('Failed to delete candidate: '+ err.message))
+                }
+                if (this.changes === 0) {
+                    return reject(new Error('Candidate not found with ID: ' + id));
+                } 
+                
+                resolve(this.changes);
+            
+            })
+            return result;
+        })
     } catch (err){
         console.error ('Error deleting candidate:', err.message);
         throw new Error ('Failed to deelete candidate:'+ err.message)
