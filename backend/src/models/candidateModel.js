@@ -32,7 +32,7 @@ const getAllCandidates = async () =>{
         return candidates;
     }catch (err){
         console.error('Error fetching candidates:', err.message);
-        throw new Error('Failed to fetch candidates', err.message);
+        throw new Error('Failed to fetch candidates: '+ err.message);
     }
 }
 
@@ -56,16 +56,62 @@ const getCandidateById = async (id) =>{
         return candidate;
 
     }catch (err){
-        console.error('Error fetching candidate by ID:', err.message);
-        throw new Error('Failed to fetch candidate by ID', err.message);
+        console.error('Error fetching candidate by ID: ', err.message);
+        throw new Error('Failed to fetch candidate by ID: '+ err.message);
     }
 };
 
 const createCandidate = async (candidateData) =>{
     try{
-        const { name}
+        const { name , stage, applicationDate, overallScore, referralStatus, assessmentStatus } = candidateData;
+        const requiredFields = ['name', 'stage', 'applicationDate', 'overallScore', 'referralStatus', 'assessmentStatus'];
+        const missingField = requiredFields.find(field => candidateData[field] === undefined || candidateData[field] === null);
+
+        if (missingField) {
+            throw new Error(`Missing required field: ${missingField}`);
+        }
+
+        const validStages = ['Applying Period', 'Screening', 'Interview', 'Test'];
+        if (!validStages.includes(candidateData.stage)) {
+            throw new Error(`Invalid stage: ${stage}. Valid stages are: ${validStages.join(', ')}`);
+        }
+
+        if (typeof overallScore !== 'number' || isNaN(overallScore)) {
+            throw new Error('overallScore must be a valid number');
+        }
+
+        const validReferralStatuses = ['Referred', 'Not Referred'];
+        if (!validReferralStatuses.includes(referralStatus)) {
+            throw new Error(`Invalid referralStatus: ${referralStatus}. Valid values are: ${validReferralStatuses.join(', ')}`);
+        }
+
+        const validAssessmentStatuses = ['Pending', 'Completed'];
+        if (!validAssessmentStatuses.includes(assessmentStatus)) {
+            throw new Error(`Invalid assessmentStatus: ${assessmentStatus}. Valid values are: ${validAssessmentStatuses.join(', ')}`);
+        }
+
+        const sql = 'INSERT INTO candidates (name, stage, applicationDate, overallScore, referralStatus, assessmentStatus) VALUES (?, ?, ?, ?, ?, ?)';
+        const params = [
+            String(name),
+            String(stage),
+            String(applicationDate),
+            overallScore,
+            String(referralStatus),
+            String(assessmentStatus)
+        ];
+        
+        const result = await new Promise ((resolve, reject) => {
+            db.run(sql, params, function (err) {
+                if (err) {
+                    return reject(new Error('Failed to create candidate: ' + err.message));
+                }
+                resolve(this.lastID);
+            });
+        });
+        return result;
+
     } catch (err) {
-        console.error('Error creating candidate:', err.message);
-        throw new Error('Failed to create candidate', err.message);
+        console.error('Error creating candidate: ', err.message);
+        throw new Error('Failed to create candidate: '+ err.message);
     }
 }
