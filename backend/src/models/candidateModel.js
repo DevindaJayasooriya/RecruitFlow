@@ -115,3 +115,77 @@ const createCandidate = async (candidateData) =>{
         throw new Error('Failed to create candidate: '+ err.message);
     }
 }
+
+const updateCandidate = async (id, candidateData) =>{
+    try{
+        if (!Number.isInteger(Number(id)) || Number(id) <= 0) {
+            throw new Error('Invalid ID: ID must be a positive integer');
+        }
+
+        const { name, stage, applicationDate, overallScore, referralStatus, assessmentStatus } = candidateData;
+        const requiredFields = ['name', 'stage', 'applicationDate', 'overallScore', 'referralStatus', 'assessmentStatus'];
+        const missingField = requiredFields.find(field => candidateData[field] === undefined || candidateData[field] === null);
+
+        if (missingField) {
+            throw new Error(`Missing required field: ${missingField}`);
+        }
+
+        const validStages = ['Applying Period', 'Screening', 'Interview', 'Test'];
+        if (!validStages.includes(candidateData.stage)) {
+            throw new Error(`Invalid stage: ${candidateData.stage}. Valid stages are: ${validStages.join(', ')}`);
+        }
+
+        if (typeof overallScore !== 'number' || isNaN(overallScore)) {
+            throw new Error('overallScore must be a valid number');
+        }
+
+        const validReferralStatuses = ['Referred', 'Not Referred'];
+        if (!validReferralStatuses.includes(referralStatus)) {
+            throw new Error(`Invalid referralStatus: ${referralStatus}. Valid values are: ${validReferralStatuses.join(', ')}`);
+        }
+
+        const validAssessmentStatuses = ['Pending', 'Completed'];
+        if (!validAssessmentStatuses.includes(assessmentStatus)) {
+            throw new Error(`Invalid assessmentStatus: ${assessmentStatus}. Valid values are: ${validAssessmentStatuses.join(', ')}`);
+        }
+
+        const sql = `UPDATE candidates SET name = ?, stage = ?, applicationDate = ?, overallScore = ?, referralStatus = ?, assessmentStatus = ? WHERE id = ?`;
+        const params = [
+            String(name),
+            String(stage),
+            String(applicationDate),
+            overallScore,
+            String(referralStatus),
+            String(assessmentStatus),
+            id
+        ];
+
+        const result = await new Promise ((resolve, reject) => {
+            db.run(sql, params, function (err) {
+                if (err) {
+                    return reject(new Error('Failed to update candidate: ' + err.message));
+                }
+                resolve(this.changes);
+            });
+        });
+
+        if (result === 0) {
+            throw new Error('Candidate not found with ID: ' + id);
+        }
+
+        return result;
+
+    } catch (err) {
+        console.error('Error updating candidate: ', err.message);
+        throw new Error('Failed to update candidate: '+ err.message);
+    }
+}
+
+const deleteCandidate = async (id) =>{
+    try{
+
+    } catch (err){
+        console.error ('Error deleting candidate:', err.message);
+        throw new Error ('Failed to deelete candidate:'+ err.message)
+    }
+}
