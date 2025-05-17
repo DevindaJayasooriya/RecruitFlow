@@ -53,13 +53,34 @@ const createCandidateController = async (req, res) => {
         if(err.message.includes('Missing required field') || err.message.includes('Invalid stage') || err.message.includes('overallScore must be a valid number') || err.message.includes('Invalid referralStatus') || err.message.includes('Invalid assessmentStatus')){
             return res.status(400).json({ error: err.message });
         }
-        
+
         res.status(500).json({ error: err.message });
     }
 } 
 
 const updateCandidateController = async (req, res) => {
+    const id = parseInt(req.params.id, 10);
+    if (isNaN(id) || id <= 0) {
+        return res.status(400).json({ error: 'Invalid candidate ID: ID must be a positive integer' });
+    }
+    if (!req.body || Object.keys(req.body).length === 0){
+        res.status(400).json({error: 'Invalid request body: missing candidate data'});
+    }
+    try{
+        const changes = await updateCandidate(id, req.body);
+        res.status(200).json({ changes : changes , message: 'Candidate updated successfully' });
+    } catch (err){
+        console.error('Error updating candidate:', err.message);
+        if(err.message.includes('Candidate not found with ID')){
+            return res.status(404).json({ error: err.message });
+        }
 
+        if(err.message.includes('Missing required field') || err.message.includes('Invalid stage') || err.message.includes('Invalid referralStatus') || err.message.includes('Invalid assessmentStatus') || err.message.includes('overallScore must be a valid number')){
+            return res.status(400).json({ error: err.message });
+        }
+
+        res.status(500).json({ error: err.message });
+    }
 }
 
 const deleteCandidateController = async (req, res) => {
