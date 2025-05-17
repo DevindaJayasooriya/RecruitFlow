@@ -209,3 +209,5 @@ const deleteCandidate = async (id) =>{
         throw new Error ('Failed to deelete candidate:'+ err.message)
     }
 }
+
+module.exports = { getAllCandidates, getCandidateById, createCandidate, updateCandidate,deleteCandidate }
