@@ -12,7 +12,7 @@ app.use(cors());
 
 app.use(express.json());
 
-app.use('api/candidates', candidateRoutes);
+app.use('/api/candidates', candidateRoutes);
 
 app.listen(PORT, () => {
   console.log(`App is running on port ${PORT}`);

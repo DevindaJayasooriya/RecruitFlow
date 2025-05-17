@@ -1,6 +1,6 @@
 const db = require("../config/dbConfig");
 
-const getAllCandidates = async () => {
+const getAllCandidates = async (query) => {
   try {
     const { stage, page = 1, limit = 10, sortBy = "id" } = query;
     const offset = (page - 1) * limit;
@@ -13,12 +13,12 @@ const getAllCandidates = async () => {
       params.push(stage);
     }
 
-    sql += " LIMIT ? OFFSET ?";
-    params.push(parseInt(limit), parseInt(offset));
-
     const validSortFields = ["id", "name", "applicationDate", "overallScore"];
     const sortField = validSortFields.includes(sortBy) ? sortBy : "id";
     sql += ` ORDER BY ${sortField} ASC`;
+
+    sql += " LIMIT ? OFFSET ?";
+    params.push(parseInt(limit), parseInt(offset));
 
     const candidates = await new Promise((resolve, reject) => {
       db.all(sql, params, (err, rows) => {
@@ -248,10 +248,10 @@ const deleteCandidate = async (id) => {
       throw new Error("Invalid ID: ID must be a positive integer");
     }
 
-    const sql = "DELETE FROM candidats WHERE id = ?";
+    const sql = "DELETE FROM candidates WHERE id = ?";
     const params = [id];
 
-    const result = await new Promise((resolve, reject) => {
+    const changes = await new Promise((resolve, reject) => {
       db.run(sql, params, function (err) {
         if (err) {
           return reject(
@@ -264,11 +264,13 @@ const deleteCandidate = async (id) => {
 
         resolve(this.changes);
       });
-      return result;
     });
+
+    return changes;
+
   } catch (err) {
     console.error("Error deleting candidate:", err.message);
-    throw new Error("Failed to deelete candidate:" + err.message);
+    throw new Error("Failed to delete candidate:" + err.message);
   }
 };
 
