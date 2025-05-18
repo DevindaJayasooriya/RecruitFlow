@@ -1,4 +1,8 @@
 .app {
   padding-top: 60px; 
+  display: flex;
   font-family: 'Poppins', sans-serif;
+}
+.sidebarOpen {
+  transform: translateX(0) !important; /* Override default transform on mobile */
 }

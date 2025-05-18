@@ -1,12 +1,21 @@
-// src/components/App.jsx
-import React from 'react';
+import React, { useState } from 'react';
 import NavigationBar from './components/NavigationBar';
-import './styles/App.module.css';
+import Sidebar from './components/Sidebar';
+// import KanbanBoard from './KanbanBoard';
+import styles from './styles/App.module.css';
 
 const App = () => {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
+
   return (
-    <div className="app">
-      <NavigationBar />
+    <div className={styles.app}>
+      <NavigationBar toggleSidebar={toggleSidebar} />
+      <Sidebar className={isSidebarOpen ? styles.sidebarOpen : ''} />
+      {/* <KanbanBoard /> */}
     </div>
   );
 };

@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from '../styles/NavigationBar.module.css';
 import { FaPlus, FaBars } from 'react-icons/fa';
 import { IoSearch } from "react-icons/io5";
 import { MdOutlineNotificationsActive } from "react-icons/md";
 import { Avatar } from '@mui/material';
 
-const NavigationBar = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+const NavigationBar = ({ toggleSidebar }) => {
+  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -16,7 +16,7 @@ const NavigationBar = () => {
     <nav className={styles.navbar}>
       <div className={styles.logoContainer}>
         <div className={styles.logo}>tiimi | Recruitment</div>
-        <button className={styles.menuButton} onClick={toggleMenu}>
+        <button className={styles.menuButton} onClick={() => { toggleMenu(); toggleSidebar(); }}>
           <FaBars />
         </button>
       </div>
@@ -24,7 +24,6 @@ const NavigationBar = () => {
         <li className={styles.navItem}>Jobs <span className={styles.badge}>08</span></li>
         <li className={styles.navItem}>Candidates <span className={styles.badge}>551</span></li>
         <li className={styles.navItem}>Career Site</li>
-        {/* Actions moved into mobile menu */}
         <li className={styles.mobileActions}>
           <button className={styles.actionButton}><FaPlus /></button>
           <button className={styles.actionButton}><IoSearch /></button>
@@ -34,7 +33,6 @@ const NavigationBar = () => {
           </div>
         </li>
       </ul>
-      {/* Actions remain in desktop view */}
       <div className={styles.actions}>
         <button className={styles.actionButton}><FaPlus /></button>
         <button className={styles.actionButton}><IoSearch /></button>
