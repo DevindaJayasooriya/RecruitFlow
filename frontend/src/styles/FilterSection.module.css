@@ -1,0 +1,195 @@
+.filterSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  padding: 10px 30px;
+  background-color: #f1f3f5;
+  margin-left: 20px;
+  margin-bottom: 20px;
+}
+
+.leftControls,
+.rightControls {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.searchBar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 5px 10px;
+}
+
+.searchBar input {
+  border: none;
+  outline: none;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.dateRangeContainer,
+.scoreRangeContainer,
+.kanbanButtonContainer {
+  position: relative;
+}
+
+.dateRangeButton,
+.scoreRangeButton,
+.filterButton,
+.referButton,
+.settingsButton,
+.kanbanButton {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: none;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 5px 10px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #333;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.dateRangeButton:hover,
+.scoreRangeButton:hover,
+.filterButton:hover,
+.referButton:hover,
+.settingsButton:hover,
+.kanbanButton:hover {
+  background-color: #e6f4ea;
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  padding: 10px;
+}
+
+.dateRangeInputs,
+.scoreRangeInputs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.dateRangeInputs input {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.dateRangeInputs span {
+  font-size: 0.9rem;
+  color: #666;
+  text-align: center;
+}
+
+.scoreRangeInputs label {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.scoreRangeInputs input {
+  width: 150px;
+}
+
+.dropdownMenu button {
+  display: block;
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 8px 15px;
+  text-align: left;
+  font-size: 0.9rem;
+  color: #333;
+  cursor: pointer;
+}
+
+.dropdownMenu button:hover {
+  background-color: #f1f3f5;
+}
+
+.icon {
+  font-size: 1.2rem;
+  color: #666;
+}
+
+/* Mobile Styles (below 768px) */
+@media (max-width: 768px) {
+  .filterSection {
+    margin-left: 0;
+    padding: 8px 20px;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  .leftControls,
+  .rightControls {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .searchBar {
+    flex: 1;
+    min-width: 200px;
+  }
+
+  .searchBar input {
+    font-size: 0.8rem;
+  }
+
+  .dateRangeButton,
+  .scoreRangeButton,
+  .filterButton,
+  .referButton,
+  .settingsButton,
+  .kanbanButton {
+    font-size: 0.8rem;
+    padding: 4px 8px;
+  }
+
+  .dateRangeInputs input {
+    font-size: 0.8rem;
+    padding: 3px;
+  }
+
+  .dateRangeInputs span {
+    font-size: 0.8rem;
+  }
+
+  .scoreRangeInputs label {
+    font-size: 0.8rem;
+  }
+
+  .scoreRangeInputs input {
+    width: 120px;
+  }
+
+  .icon {
+    font-size: 1rem;
+  }
+
+  .dropdownMenu button {
+    font-size: 0.8rem;
+    padding: 6px 12px;
+  }
+}

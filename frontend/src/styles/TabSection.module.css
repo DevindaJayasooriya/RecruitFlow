@@ -1,0 +1,64 @@
+.tabSection {
+  display: flex;
+  gap: 20px;
+  padding: 10px 30px;
+  background-color: #ffffff00;
+  border-bottom: 1px solid #ddd;
+  margin-left: 20px; 
+  margin-bottom: 20px; 
+}
+
+.tabButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  padding: 8px 12px;
+  font-size: 14px ;
+  font-weight: 500;
+  color: #666;
+  cursor: pointer;
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.tabButton:hover {
+  color: #333;
+  background-color: #f1f3f5;
+  border-radius: 4px;
+}
+
+.activeTab {
+  color: #1e652f; 
+  background-color: #e6f4ea; /* Light green background for active tab */
+  border-radius: 4px;
+}
+
+.tabButton svg {
+  font-size: 1 rem;
+}
+
+/* Mobile Styles (below 768px) */
+@media (max-width: 768px) {
+  .tabSection {
+    margin-left: 0;
+    padding: 8px 20px;
+    gap: 10px;
+    overflow-x: auto; /* Allow horizontal scrolling on mobile */
+    white-space: nowrap;
+  }
+
+  .tabButton {
+    padding: 6px 10px;
+    font-size: 0.9rem;
+  }
+
+  .tabButton svg {
+    font-size: 1rem;
+  }
+
+  .activeTab {
+    color: #1e652f;
+    background-color: #e6f4ea;
+  }
+}

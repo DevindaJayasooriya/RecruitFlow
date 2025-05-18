@@ -1,0 +1,212 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+  background-color: #ffffff00;
+  /* border-bottom: 1px solid #ffffff; */
+  width: 100%;
+  font-family: 'Poppins', sans-serif;
+}
+
+.leftSection {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.backButton {
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 4px;
+  color: #64748b;
+}
+
+.arrowIcon {
+  font-size: 18px;
+  color: #64748b;
+}
+
+.titleContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.titleWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0;
+  padding: 0;
+}
+
+.titleDropdownIcon {
+  margin-left: 8px;
+  font-size: 16px;
+  color: #64748b;
+}
+
+.subTitleSection {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.openButton {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background-color: #ecfdf5;
+  border-radius: 16px;
+  padding: 3px 10px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #10b981;
+}
+
+.openDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #10b981;
+}
+
+.subTitleItem {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  color: #64748b;
+}
+
+.subtitleIcon {
+  font-size: 15px;
+  color: #64748b;
+}
+
+.avatarImage {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin: 0 2px;
+}
+
+.userName {
+  margin-left: 2px;
+  font-weight: 500;
+  color: #334155;
+}
+
+.rightSection {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.navigationControls {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.navButton {
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 4px;
+  color: #64748b;
+}
+
+.navIcon {
+  font-size: 18px;
+  color: #64748b;
+}
+
+.jobCount {
+  font-size: 14px;
+  color: #64748b;
+  margin: 0 8px;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.menuButton {
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.dotsIcon {
+  font-size: 20px;
+  color: #64748b;
+}
+
+.actionButton {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #0f766e;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 14px;
+  transition: background-color 0.2s ease;
+}
+
+.actionButton:hover {
+  background-color: #0d6868;
+}
+
+.shareIcon {
+  font-size: 16px;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px 16px;
+  }
+
+  .rightSection {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .subTitleSection {
+    margin-top: 8px;
+    gap: 8px;
+  }
+
+  .actionText {
+    display: none;
+  }
+
+  .actionButton {
+    padding: 8px;
+  }
+}

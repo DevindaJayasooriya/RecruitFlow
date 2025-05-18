@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import NavigationBar from './components/NavigationBar';
 import Sidebar from './components/Sidebar';
-// import KanbanBoard from './KanbanBoard';
+import KanbanBoard from './components/KanbanBoard';
+import TabSection from './components/TabSection';
 import styles from './styles/App.module.css';
 
 const App = () => {
@@ -15,7 +16,7 @@ const App = () => {
     <div className={styles.app}>
       <NavigationBar toggleSidebar={toggleSidebar} />
       <Sidebar className={isSidebarOpen ? styles.sidebarOpen : ''} />
-      {/* <KanbanBoard /> */}
+      <KanbanBoard />
     </div>
   );
 };

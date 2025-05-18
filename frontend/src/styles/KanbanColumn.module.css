@@ -1,0 +1,64 @@
+.column {
+  flex: 1 1 0;
+  min-width: 250px;
+  background-color: white;
+  border-radius: 12px;
+  padding: 15px;
+  min-height: 200px;
+}
+
+.columnTitle {
+  width:180px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #fefefe;
+  margin-bottom: 10px;
+  padding: 5px 10px;
+  border-radius: 18px;
+}
+
+.applyingTitle {
+  background-color: #e3611b; /* Light red */
+}
+
+.screeningTitle {
+  background-color: #da50be; /* Light green */
+}
+
+.interviewTitle {
+  background-color: #307eed; /* Light blue */
+}
+
+.testTitle {
+  background-color: #0eeded; /* Light yellow */
+}
+
+/* Mobile Styles (below 768px) */
+@media (max-width: 768px) {
+  .column {
+    flex: 1 1 0;
+    min-width: 200px;
+    padding: 10px;
+  }
+
+  .columnTitle {
+    font-size: 1rem;
+    padding: 4px 8px;
+  }
+
+  .applyingTitle {
+    background-color: #ffcccc;
+  }
+
+  .screeningTitle {
+    background-color: #ccffcc;
+  }
+
+  .interviewTitle {
+    background-color: #cceeff;
+  }
+
+  .testTitle {
+    background-color: #ffffcc;
+  }
+}
