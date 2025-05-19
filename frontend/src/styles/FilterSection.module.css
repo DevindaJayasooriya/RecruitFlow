@@ -4,7 +4,7 @@
   align-items: center;
   gap: 15px;
   padding: 10px 30px;
-  background-color: #f1f3f5;
+  background-color: #f1f3f500;
   margin-left: 20px;
   margin-bottom: 20px;
 }
@@ -131,26 +131,200 @@
   color: #666;
 }
 
-/* Mobile Styles (below 768px) */
+.popupOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popupContent {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  width: 400px;
+}
+
+.popupContent h2 {
+  margin-top: 0;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.popupContent form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.popupContent label {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.popupContent input,
+.popupContent select {
+  padding: 8px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.popupContent button {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.popupContent button[type="submit"] {
+  background-color: #1e652f;
+  color: #ffffff;
+}
+
+.popupContent button[type="submit"]:hover {
+  background-color: #218838;
+}
+
+.popupContent button[type="button"] {
+  background-color: #ddd;
+  color: #333;
+}
+
+.popupContent button[type="button"]:hover {
+  background-color: #ccc;
+}
+
+/* Mobile Styles */
 @media (max-width: 768px) {
   .filterSection {
     margin-left: 0;
-    padding: 8px 20px;
+    padding: 8px 15px;
     gap: 10px;
-    flex-wrap: wrap;
-    justify-content: flex-start;
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .leftControls,
   .rightControls {
-    flex-direction: column;
-    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 8px;
     width: 100%;
+    justify-content: space-between;
   }
 
   .searchBar {
-    flex: 1;
-    min-width: 200px;
+    width: 100%;
+    padding: 4px 8px;
+  }
+
+  .searchBar input {
+    font-size: 0.85rem;
+    width: 100%;
+  }
+
+  .dateRangeButton,
+  .scoreRangeButton,
+  .filterButton,
+  .referButton,
+  .settingsButton,
+  .kanbanButton {
+    font-size: 0.85rem;
+    padding: 4px 8px;
+    min-width: 120px;
+  }
+
+  .dropdownMenu {
+    min-width: 150px;
+    padding: 8px;
+  }
+
+  .dateRangeInputs,
+  .scoreRangeInputs {
+    gap: 6px;
+  }
+
+  .dateRangeInputs input {
+    font-size: 0.85rem;
+    padding: 3px;
+  }
+
+  .dateRangeInputs span {
+    font-size: 0.85rem;
+  }
+
+  .scoreRangeInputs label {
+    font-size: 0.85rem;
+  }
+
+  .scoreRangeInputs input {
+    width: 120px;
+  }
+
+  .dropdownMenu button {
+    font-size: 0.85rem;
+    padding: 6px 12px;
+  }
+
+  .popupContent {
+    width: 90%;
+    padding: 15px;
+  }
+
+  .popupContent h2 {
+    font-size: 1.2rem;
+  }
+
+  .popupContent form {
+    gap: 10px;
+  }
+
+  .popupContent label {
+    font-size: 0.85rem;
+  }
+
+  .popupContent input,
+  .popupContent select {
+    font-size: 0.85rem;
+    padding: 6px;
+  }
+
+  .popupContent button {
+    font-size: 0.85rem;
+    padding: 6px 12px;
+    margin-right: 5px;
+  }
+
+  .icon {
+    font-size: 1rem;
+  }
+}
+
+/* Extra Small Screens */
+@media (max-width: 480px) {
+  .filterSection {
+    padding: 6px 10px;
+    gap: 8px;
+  }
+
+  .leftControls,
+  .rightControls {
+    gap: 6px;
+  }
+
+  .searchBar {
+    padding: 3px 6px;
   }
 
   .searchBar input {
@@ -164,12 +338,23 @@
   .settingsButton,
   .kanbanButton {
     font-size: 0.8rem;
-    padding: 4px 8px;
+    padding: 3px 6px;
+    min-width: 100px;
+  }
+
+  .dropdownMenu {
+    min-width: 130px;
+    padding: 6px;
+  }
+
+  .dateRangeInputs,
+  .scoreRangeInputs {
+    gap: 5px;
   }
 
   .dateRangeInputs input {
     font-size: 0.8rem;
-    padding: 3px;
+    padding: 2px;
   }
 
   .dateRangeInputs span {
@@ -181,15 +366,43 @@
   }
 
   .scoreRangeInputs input {
-    width: 120px;
-  }
-
-  .icon {
-    font-size: 1rem;
+    width: 100px;
   }
 
   .dropdownMenu button {
     font-size: 0.8rem;
-    padding: 6px 12px;
+    padding: 5px 10px;
+  }
+
+  .popupContent {
+    padding: 10px;
+  }
+
+  .popupContent h2 {
+    font-size: 1rem;
+  }
+
+  .popupContent form {
+    gap: 8px;
+  }
+
+  .popupContent label {
+    font-size: 0.8rem;
+  }
+
+  .popupContent input,
+  .popupContent select {
+    font-size: 0.8rem;
+    padding: 4px;
+  }
+
+  .popupContent button {
+    font-size: 0.8rem;
+    padding: 5px 10px;
+    margin-right: 3px;
+  }
+
+  .icon {
+    font-size: 0.9rem;
   }
 }

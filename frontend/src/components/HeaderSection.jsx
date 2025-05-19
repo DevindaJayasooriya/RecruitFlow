@@ -37,7 +37,6 @@ const HeaderSection = () => {
               <div className={styles.subTitleItem}>
                 <FaUserCircle className={styles.subtitleIcon} />
                 Created by
-                <img src="/api/placeholder/25/25" alt="Profile" className={styles.avatarImage} />
                 <span className={styles.userName}>Devinda</span>
               </div>
             </div>

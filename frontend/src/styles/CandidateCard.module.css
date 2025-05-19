@@ -1,0 +1,169 @@
+.card {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  margin-bottom: 10px;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.initialsAvatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #ffffff;
+  text-transform: uppercase;
+}
+
+.info {
+  flex: 1;
+}
+
+.name {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #222;
+  margin: 0 0 4px;
+}
+
+.applicationDate {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  color: #777;
+}
+
+.divider {
+  border: 0;
+  border-top: 1px solid #e0e0e0;
+  margin: 10px 0;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.detailItem {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  color: #444;
+}
+
+.starButton {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: default;
+  display: flex;
+  align-items: center;
+}
+
+.starIcon {
+  font-size: 1rem;
+  color: #ffd700;
+}
+
+.referred {
+  font-size: 0.85rem;
+  color: #28a745;
+  font-weight: 500;
+}
+
+.addAssessmentButton {
+  background-color: #28a745;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 4px 8px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.addAssessmentButton:hover {
+  background-color: #218838;
+}
+
+.icon {
+  font-size: 1.1rem;
+  color: #666;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .card {
+    padding: 10px;
+    margin-bottom: 8px;
+  }
+
+  .header {
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  .initialsAvatar {
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
+  }
+
+  .name {
+    font-size: 1rem;
+  }
+
+  .applicationDate {
+    font-size: 0.75rem;
+  }
+
+  .divider {
+    margin: 8px 0;
+  }
+
+  .details {
+    gap: 4px;
+  }
+
+  .detailItem {
+    font-size: 0.85rem;
+  }
+
+  .starIcon {
+    font-size: 1.1rem;
+  }
+
+  .referred {
+    font-size: 0.75rem;
+  }
+
+  .addAssessmentButton {
+    font-size: 0.75rem;
+    padding: 3px 6px;
+  }
+
+  .icon {
+    font-size: 0.95rem;
+  }
+}
